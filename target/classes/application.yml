@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/fengcheche?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+
+server:
+  port: 8077
+
+actable:
+  table:
+    auto: update
+  model:
+    pack: com.zsy.moudle #扫描用于创建表的对象的包名
+  database:
+    type: mysql
+
+# Mybatis-plus
+mybatis-plus:
+  # 固定的
+  mapper-locations: classpath*:com/gitee/sunchenbin/mybatis/actable/mapping/*/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    default-enum-type-handler: com.baomidou.mybatisplus.extension.handlers.MybatisEnumTypeHandler
