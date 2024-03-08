@@ -18,8 +18,6 @@ import java.util.List;
 
 /**
  * 统一异常处理
- *
- * @author Mayday
  */
 @ControllerAdvice
 @Slf4j

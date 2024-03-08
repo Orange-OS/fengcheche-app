@@ -37,11 +37,11 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
                 // 进行 Shiro 的登录 UserRealm
                 this.executeLogin(request, response);
             } catch (Exception e) {
-                // 认证出现异常，传递错误信息msg
+                // 认证出现异常，传递错误信息 msg
                 String msg = e.getMessage();
                 // 获取应用异常(该Cause是导致抛出此throwable(异常)的throwable(异常))
                 Throwable throwable = e.getCause();
-                // Token认证失败直接返回Response信息
+                // Token 认证失败直接返回 Response 信息
                 this.response401(response, "认证信息失效，请重新登录.");
                 return false;
             }
@@ -63,15 +63,15 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
     }
 
     /**
-     * 进行AccessToken登录认证授权
+     * 进行 AccessToken 登录认证授权
      */
     @Override
     protected boolean executeLogin(ServletRequest request, ServletResponse response) throws Exception {
-        // 拿到当前Header中Authorization的AccessToken(Shiro中getAuthzHeader方法已经实现)
+        // 拿到当前 Header 中 Authorization 的 AccessToken (Shiro 中 getAuthzHeader 方法已经实现)
         JwtToken token = new JwtToken(this.getAuthzHeader(request));
-        // 提交给UserRealm进行认证，如果错误他会抛出异常并被捕获
+        // 提交给 UserRealm 进行认证，如果错误他会抛出异常并被捕获
         this.getSubject(request, response).login(token);
-        // 如果没有抛出异常则代表登入成功，返回true
+        // 如果没有抛出异常则代表登入成功，返回 true
         return true;
     }
 

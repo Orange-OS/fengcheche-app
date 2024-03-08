@@ -2,6 +2,8 @@ package com.zsy.moudle.admin.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.gitee.sunchenbin.mybatis.actable.annotation.Column;
 import com.gitee.sunchenbin.mybatis.actable.constants.MySqlTypeConstant;
 import lombok.Data;
@@ -18,5 +20,6 @@ public abstract class BaseId implements Serializable {
      */
     @Column(name = "id", type = MySqlTypeConstant.BIGINT, isKey = true, comment = "ID")
     @TableId(type = IdType.ASSIGN_ID)
+    @JsonSerialize(using = ToStringSerializer.class)
     protected Long id;
 }

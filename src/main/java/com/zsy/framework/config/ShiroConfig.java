@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 
 import javax.servlet.Filter;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -34,7 +33,7 @@ public class ShiroConfig {
     @Bean("securityManager")
     public DefaultWebSecurityManager defaultWebSecurityManager(FengCheCheRealm fengCheCheRealm) {
         DefaultWebSecurityManager defaultWebSecurityManager = new DefaultWebSecurityManager();
-        // 使用自定义 Realm
+        // 注入 Realm
         defaultWebSecurityManager.setRealm(fengCheCheRealm);
 
         // 关闭Shiro自带的session
@@ -60,7 +59,7 @@ public class ShiroConfig {
          * role：拥有某个角色权限才能访问
          */
 
-        Map<String, Filter> filterMap = new HashMap<>(16);
+        Map<String, Filter> filterMap = new LinkedHashMap<>(16);
         filterMap.put("jwt", new JwtFilter());
         shiroFilterFactoryBean.setFilters(filterMap);
 

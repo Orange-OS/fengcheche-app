@@ -21,7 +21,7 @@ public class PublicUtil implements InitializingBean {
 
 
     /**
-     * 获取当前登录用户ID
+     * 获取当前登录用户 ID
      */
     public static Long getUserId() {
         UserInfo userInfo = getUserInfo();
@@ -32,7 +32,7 @@ public class PublicUtil implements InitializingBean {
     }
 
     /**
-     * 获取当前登录用户Token
+     * 获取当前登录用户 Token
      */
     public static String getToken() {
         return SecurityUtils.getSubject().getPrincipal().toString();
